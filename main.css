@@ -1,0 +1,15 @@
+h1 {
+  color: blue;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.square {
+  height: 80px;
+  width: 80px;
+  background-color: gray;
+  margin: 10px;
+}
