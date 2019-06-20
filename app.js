@@ -1,11 +1,10 @@
 // Tic Tac Toe By Christine Samarchi
 
 // Variables
-let playerX = [];
-let playerO = [];
+let playerX = 0;
+let playerO = 0;
 let turnCounter = 0;
-
-
+let wins = 0;
 
 // Board Stuff / UI Layer
 const getRow = (className) => {
@@ -21,30 +20,50 @@ const getCol = (className) => {
 const handleClick = (e) => {
   let row = getRow(e.target.className);
   let col = getCol(e.target.className);
+  if (board[row][col] === 'X' || board[row][col] === 'O') {
+    return
+  }
   if (turnCounter % 2 === 0) {
     e.target.style.background = 'blue'
-    e.target.innerHTML = 'X';
-    playerX.push(event.target.id)
+    e.target.innerHTML = '<h2>' + 'X' + '</h2>';
     board[row][col] = 'X';
   } else {
     e.target.style.background= 'red';
-    e.target.innerHTML = 'O';
-    playerO.push(event.target.id)
+    e.target.innerHTML = '<h2>' + 'O' + '</h2>'
     board[row][col] = 'O';
   }
   turnCounter++
-  checkForSolution('X');
-  checkForSolution('O');
+  if (checkForSolution('X')) {
+    playerX++
+    alert('PlayerX Won')
+  }
+  if (checkForSolution('O')) {
+    playerO++
+    alert('PlayerO Won')
+  }
+  document.getElementById('player1').innterHTML = playerX;
+  document.getElementById('player2').innterHTML = playerO;
 }
+
+const handleReset = (e) => {
+  let boxes = document.getElementsByClassName("square")
+  for (let i = 0; i < boxes.length; i++) {
+    boxes.style.background = 'gray';
+  }
+  // document.getElementsByClassName('square')[0][1][2].style.background = 'gray'
+
+}
+
 
 const landing = () => {
   console.log('hello');
   $('.square').click(handleClick)
+  $('.btn').click(handleReset)
 }
 
 // Logic Layer
 
-const board = [
+let board = [
   ['', '', ''],
   ['', '', ''],
   ['', '', ''],
@@ -57,10 +76,14 @@ const checkForSolution = (mark) => {
   let diag2 = checkDiag2(mark);
 
   if (rows || cols || diag1 || diag2) {
-    console.log('WINNER!');
+    wins++
     return true
   } else {
     return false
+  }
+
+  if (wins === 3) {
+    alert('Game Over')
   }
 }
 

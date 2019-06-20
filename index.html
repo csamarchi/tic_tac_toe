@@ -13,20 +13,33 @@
   </head>
   <body>
     <h1>Tic Tac Toe</h1>
-      <div class='row'>
-        <div id= '1' class='square 0 0'></div>
-        <div id= '2' class='square 0 1'></div>
-        <div id= '3' class='square 0 2'></div>
+      <div class='playerContainer'>
+        <div class='eachPlayer'>
+          <h1 id='player1' class='players'>Player 1</h1>
+            <h2>0</h2>
+        </div>
+        <div class='eachPlayer'>
+          <h1 id='player2' class='players'>Player 2</h1>
+            <h2>0</h2>
+        </div>
       </div>
-      <div class='row'>
-        <div id= '4' class='square 1 0'></div>
-        <div id= '5' class='square 1 1'></div>
-        <div id= '6' class='square 1 2'></div>
-      </div>
-      <div class='row'>
-        <div id= '7' class='square 2 0'></div>
-        <div id= '8' class='square 2 1'></div>
-        <div id= '9' class='square 2 2'></div>
-      </div>
+        <div class='container'>
+          <div id='row' class='row'>
+            <div id='box' class='square 0 0'></div>
+            <div id='box' class='square 0 1'></div>
+            <div id='box' class='square 0 2'></div>
+          </div>
+          <div id='row' class='row'>
+            <div id='box' class='square 1 0'></div>
+            <div id='box' class='square 1 1'></div>
+            <div id='box' class='square 1 2'></div>
+          </div>
+          <div id='row' class='row'>
+            <div id='box' class='square 2 0'></div>
+            <div id='box' class='square 2 1'></div>
+            <div id='box' class='square 2 2'></div>
+          </div>
+          <button class='btn'> Reset </button>
+        </div>
   </body>
 </html>
